@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Hello from './components/demo/Hello';
+import HelloClass from './components/demo/HelloClass';
+import HelloHooks from './components/demo/HelloHooks';
+import LoadingHOC from './components/demo/LoadingHOC';
+import LoadingHooks from './components/demo/LoadingHooks';
 
 function App() {
+  let [loading, setLoading] = useState(true); // LoadingHOC所用参数
+  setTimeout(() => setLoading(false), 3000); // 3秒后loading完成
+
   return (
     <div className="App">
       <header className="App-header">
@@ -20,7 +27,17 @@ function App() {
           Learn React
         </a>
       </header>
-      <Hello name="typescript。" />
+
+
+      <Hello name="function comp" />
+
+      <HelloClass name="class comp" />
+      <LoadingHOC name="loading higher order comp" loading={loading} />
+
+      <HelloHooks name="hooks comp" />
+      <LoadingHooks><HelloHooks name="loading hooks comp" /></LoadingHooks>
+
+
     </div>
   );
 }
