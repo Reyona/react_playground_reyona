@@ -1,44 +1,38 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import Hello from './components/demo/Hello';
-import HelloClass from './components/demo/HelloClass';
-import HelloHooks from './components/demo/HelloHooks';
-import LoadingHOC from './components/demo/LoadingHOC';
-import LoadingHooks from './components/demo/LoadingHooks';
+
+import { Menu, ConfigProvider, Layout } from 'antd';
+import zhCN from 'antd/lib/locale/zh_CN';
+import Demo from '@pages/demo';
+import Employee from '@pages/employee'
+import Settings from '@pages/settings'
+
+const { Header, Content, Footer } = Layout;
 
 function App() {
-  let [loading, setLoading] = useState(true); // LoadingHOC所用参数
-  setTimeout(() => setLoading(false), 3000); // 3秒后loading完成
-
+  const projectUrl = 'https://github.com/Reyona/react_playground_reyona'
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-
-
-      <Hello name="function comp" />
-
-      <HelloClass name="class comp" />
-      <LoadingHOC name="loading higher order comp" loading={loading} />
-
-      <HelloHooks name="hooks comp" />
-      <LoadingHooks><HelloHooks name="loading hooks comp" /></LoadingHooks>
-
-
-    </div>
+    <ConfigProvider locale={zhCN}>
+      <Layout className="app">
+        <Header>
+          <Menu mode="horizontal" theme="dark" defaultSelectedKeys={["demo"]} className="menu">
+            <Menu.Item key="demo">Demo</Menu.Item>
+            <Menu.Item key="employee">员工管理</Menu.Item>
+            <Menu.Item key="setting">系统设置</Menu.Item>
+          </Menu>
+        </Header>
+        <Content className="contentWrap">
+          <div className="content">
+            <Demo />
+            <Employee />
+            <Settings />
+          </div>
+        </Content>
+        <Footer className="footer">
+          项目地址：{' '}<a href={projectUrl}>{projectUrl}</a>
+        </Footer>
+      </Layout>
+    </ConfigProvider>
   );
 }
 
