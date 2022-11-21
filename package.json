@@ -6,6 +6,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
+    "mockserver": "cd mock & hs -p 4000 -a localhost",
     "eject": "react-app-rewired eject"
   },
   "dependencies": {

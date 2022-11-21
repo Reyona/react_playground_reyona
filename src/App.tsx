@@ -12,12 +12,17 @@ const { Header, Content, Footer } = Layout;
 function App({ match }: any) {
   const defaultKey = match.url.replace('/', '') || 'demo';
   const projectUrl = 'https://github.com/Reyona/react_playground_reyona'
+  const menuList = [
+    { label: 'Demo', key: 'demo', to: '/demo' },
+    { label: '员工管理', key: 'employee', to: '/employee' },
+    { label: '系统设置', key: 'settings', to: '/settings' },
+  ]
   return (
     <ConfigProvider locale={zhCN}>
       <Layout className="app">
         <Header>
-          <Menu mode="horizontal" theme="dark" defaultSelectedKeys={ [ defaultKey ] } className="menu">
-            <Menu.Item key="demo">
+          <Menu mode="horizontal" theme="dark" defaultSelectedKeys={[ defaultKey ]} items={ menuList } className="menu">
+            {/* <Menu.Item key="demo">
               <Link to="/demo">Demo</Link>
             </Menu.Item>
             <Menu.Item key="employee">
@@ -25,7 +30,7 @@ function App({ match }: any) {
             </Menu.Item>
             <Menu.Item key="settings">
               <Link to="/settings">系统设置</Link>
-            </Menu.Item>
+            </Menu.Item> */}
           </Menu>
         </Header>
         <Content className="contentWrap">
