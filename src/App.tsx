@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Route, Link } from 'react-router-dom';
 import { Menu, ConfigProvider, Layout } from 'antd';
-import zhCN from 'antd/lib/locale/zh_CN';
+import zhCN from 'antd/locale/zh_CN';
 import Demo from '@pages/demo';
 import Employee from '@pages/employee'
 import Settings from '@pages/settings'
@@ -21,16 +21,12 @@ function App({ match }: any) {
     <ConfigProvider locale={zhCN}>
       <Layout className="app">
         <Header>
-          <Menu mode="horizontal" theme="dark" defaultSelectedKeys={[ defaultKey ]} items={ menuList } className="menu">
-            {/* <Menu.Item key="demo">
-              <Link to="/demo">Demo</Link>
-            </Menu.Item>
-            <Menu.Item key="employee">
-              <Link to="/employee">员工管理</Link>
-            </Menu.Item>
-            <Menu.Item key="settings">
-              <Link to="/settings">系统设置</Link>
-            </Menu.Item> */}
+          <Menu mode="horizontal" theme="dark" defaultSelectedKeys={[ defaultKey ]} className="menu">
+            {menuList.map(menuItem => (
+              <Menu.Item key={menuItem.key}>
+                <Link to={menuItem.to}>{menuItem.label}</Link>
+              </Menu.Item>
+            ))}
           </Menu>
         </Header>
         <Content className="contentWrap">

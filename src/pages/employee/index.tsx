@@ -3,6 +3,7 @@ import { Table } from 'antd';
 import './index.css';
 
 import QueryForm from '@components/employee/QueryForm';
+import { EmployeeResponse } from '@/api/employee';
 
 const employeeColumns = [
   {
@@ -27,12 +28,22 @@ const employeeColumns = [
   },
 ];
 
-class Employee extends Component {
+interface State {
+  employee: EmployeeResponse;
+}
+
+class Employee extends Component<{}, State> {
+  state: State = { employee: undefined };
+
+  handleQueryData = (data: EmployeeResponse) => {
+    this.setState({ employee: data });
+  }
+
   render() {
     return (
       <>
-        <QueryForm />
-        <Table columns={employeeColumns} className="table" />
+        <QueryForm onDataChange={this.handleQueryData} />
+        <Table columns={employeeColumns} dataSource={this.state.employee} className="table" />
       </>
     );
   }
