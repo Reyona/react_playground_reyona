@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { Dispatch, bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Table } from 'antd';
 import './index.css';
 
 import QueryForm from '@components/employee/QueryForm';
-import { EmployeeResponse } from '@/api/employee';
+import { EmployeeRequest, EmployeeResponse } from '@/api/employee';
+import { getEmployee } from '@/store/employee'
 
 const employeeColumns = [
   {
@@ -28,25 +31,31 @@ const employeeColumns = [
   },
 ];
 
-interface State {
-  employee: EmployeeResponse;
+interface Props {
+  fetchEmployee(param: EmployeeRequest): void;
+  employeeList: EmployeeResponse;
 }
 
-class Employee extends Component<{}, State> {
-  state: State = { employee: undefined };
-
-  handleQueryData = (data: EmployeeResponse) => {
-    this.setState({ employee: data });
-  }
+class Employee extends Component<Props> {
 
   render() {
     return (
       <>
-        <QueryForm onDataChange={this.handleQueryData} />
-        <Table columns={employeeColumns} dataSource={this.state.employee} className="table" />
+        <QueryForm fetchEmployee={ this.props.fetchEmployee } />
+        {/* 把一个请求数据的redux方法getEmployee传给子组件，让它在适当时机调用并传入参数，返回的结果自动存入redux */}
+        <Table columns={employeeColumns} dataSource={this.props.employeeList} className="table" />
+        {/* 把redux中的数据state.employee.employeeList传给子组件 */}
       </>
     );
   }
 }
 
-export default Employee;
+// 状态映射
+const mapStateToProps = (state: any) => ({
+  employeeList: state.employee.employeeList,
+});
+
+// action映射
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ fetchEmployee: getEmployee }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Employee);

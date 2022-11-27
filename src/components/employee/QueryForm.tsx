@@ -1,13 +1,12 @@
 import React, { Component, useEffect, useState } from 'react';
 import { Form, Input, Button, Select } from 'antd';
-import { queryEmployee, EmployeeRequest, EmployeeResponse } from '@/api/employee';
+import { queryEmployee, EmployeeRequest } from '@/api/employee';
 
 const { Option } = Select;
 
 // 定义属性类型
-interface Props { // extends FormProps
-  onDataChange(data: EmployeeResponse): void;
-  children?: any;
+interface Props {
+  fetchEmployee(data: EmployeeRequest): void;
 }
 
 // P: props的类型，默认{}
@@ -47,7 +46,7 @@ class QueryForm extends Component<Props, EmployeeRequest> {
     const data = await queryEmployee(param);
     // todo 放进redux
     console.log('responseEmployee: ', data);
-    this.props.onDataChange(data);
+    this.props.fetchEmployee(param);
   };
 
   render() {
@@ -75,7 +74,7 @@ class QueryForm extends Component<Props, EmployeeRequest> {
   }
 }
 
-const QueryFormHooks = ({onDataChange = f => f}: Props) => {
+const QueryFormHooks = ({fetchEmployee = f => f}: Props) => {
   const [name, setName] = useState('')
   const [departmentId, setDepartmentId] = useState<number | undefined>(undefined)
 
@@ -91,20 +90,12 @@ const QueryFormHooks = ({onDataChange = f => f}: Props) => {
   }
 
   const handleSubmit = () => {
-    fetchEmployee({name, departmentId});
-  }
-
-  const fetchEmployee = async (param: EmployeeRequest) => {
-    console.log('queryEmployee: ', param);
-    const data = await queryEmployee(param);
-    // todo 放进redux
-    console.log('responseEmployee: ', data);
-    onDataChange(data);
+    fetchEmployee({name, departmentId}); // 父组件提供的redux方法，返回的数据自动放进redux
   }
 
   // 组件挂载完成
   useEffect(() => {
-    fetchEmployee({name, departmentId});
+    fetchEmployee({name, departmentId}); // 父组件提供的redux方法，返回的数据自动放进redux
     return () => {}; // 组件销毁时
   }, [])
 
