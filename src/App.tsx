@@ -6,6 +6,8 @@ import zhCN from 'antd/locale/zh_CN';
 import Demo from '@pages/demo';
 import Employee from '@pages/employee'
 import Settings from '@pages/settings'
+import ThemedPage from '@/pages/theme'
+import HocPage from '@/pages/hoc'
 
 const { Header, Content, Footer } = Layout;
 
@@ -14,8 +16,10 @@ function App({ match }: any) {
   const projectUrl = 'https://github.com/Reyona/react_playground_reyona'
   const menuList = [
     { label: 'Demo', key: 'demo', to: '/demo' },
+    { label: '高阶组件', key: 'hoc', to: '/hoc' },
     { label: '员工管理', key: 'employee', to: '/employee' },
     { label: '系统设置', key: 'settings', to: '/settings' },
+    { label: '主题切换', key: 'themes', to: '/themes' },
   ]
   return (
     <ConfigProvider locale={zhCN}>
@@ -33,8 +37,10 @@ function App({ match }: any) {
           <div className="content">
             <Route path="/" exact component={ Demo } />
             <Route path="/demo" component={ Demo } />
+            <Route path="/hoc" component={ HocPage } />
             <Route path="/employee" component={ Employee } />
             <Route path="/settings" component={ Settings } />
+            <Route path="/themes" component={ ThemedPage } />
           </div>
         </Content>
         <Footer className="footer">
