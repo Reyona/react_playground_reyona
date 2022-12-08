@@ -8,6 +8,8 @@ import Employee from '@pages/employee'
 import Settings from '@pages/settings'
 import ThemedPage from '@/pages/theme'
 import HocPage from '@/pages/hoc'
+import ColorPage from '@/pages/color'
+import CatPage from '@/pages/cat'
 
 const { Header, Content, Footer } = Layout;
 
@@ -20,6 +22,8 @@ function App({ match }: any) {
     { label: '员工管理', key: 'employee', to: '/employee' },
     { label: '系统设置', key: 'settings', to: '/settings' },
     { label: '主题切换', key: 'themes', to: '/themes' },
+    { label: 'Color', key: 'color', to: '/color' },
+    { label: 'Cat', key: 'cat', to: '/cat' },
   ]
   return (
     <ConfigProvider locale={zhCN}>
@@ -41,6 +45,8 @@ function App({ match }: any) {
             <Route path="/employee" component={ Employee } />
             <Route path="/settings" component={ Settings } />
             <Route path="/themes" component={ ThemedPage } />
+            <Route path="/color" component={ ColorPage } />
+            <Route path="/cat" component={ CatPage } />
           </div>
         </Content>
         <Footer className="footer">
