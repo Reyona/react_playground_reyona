@@ -1,0 +1,29 @@
+<body>
+    我是 1.html, 下面嵌套 2.html
+    <iframe src="http://localhost:4000/2.html"></iframe>
+</body>
+<script>
+    if (!document.cookie) {
+        document.cookie = 'name=1';
+        document.cookie = 'old=10';
+    }
+
+    console.log('1.html: ', document.cookie)
+    function hello() { console.log('this is 1.html'); }
+
+    var iframe = document.getElementsByTagName('iframe')[0];
+    console.log('contentWindow: ', iframe.contentWindow); // 能访问
+    console.log('contentDocument: ', iframe.contentDocument); // 能访问
+    // console.log(iframe.contentWindow.hello()); // 报错 需要在onload后才能取到hello函数
+
+    iframe.onload = function () {
+        console.log(iframe.contentWindow.hello()); // this is 2.html
+
+        // 输出location对象 依然要在iframe.onload中访问
+        console.log('contentWindow.location: ', iframe.contentWindow.location);
+        // iframe.contentWindow.location.href: "http://127.0.0.1:8000/2.html"
+        // 因为内外同源 我们可以操作<iframe>内部的DOM
+        iframe.contentDocument.body.innerHTML='<p>hi, I am your father !</p>';
+        iframe.contentDocument.getElementsByTagName('p');
+    }
+</script>

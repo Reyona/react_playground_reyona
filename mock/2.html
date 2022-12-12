@@ -1,0 +1,11 @@
+<body>
+    我是 2.html
+</body>
+<script>
+    document.cookie = 'name=2;Secure;SameSite=None;';
+    document.cookie = 'year=2020;Secure;SameSite=None;';
+
+    console.log('2.html: ', document.cookie)
+    function hello() { console.log('this is 2.html'); }
+    window.top.hello();
+</script>

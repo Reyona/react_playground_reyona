@@ -10,10 +10,12 @@ import ThemedPage from '@/pages/theme'
 import HocPage from '@/pages/hoc'
 import ColorPage from '@/pages/color'
 import CatPage from '@/pages/cat'
+import DragPage from '@/pages/drag/index'
+import DragIframe from '@/pages/drag/iframe'
 
 const { Header, Content, Footer } = Layout;
 
-function App({ match }: any) {
+function App({ match, location }: any) {
   const defaultKey = match.url.replace('/', '') || 'demo';
   const projectUrl = 'https://github.com/Reyona/react_playground_reyona'
   const menuList = [
@@ -24,35 +26,43 @@ function App({ match }: any) {
     { label: '主题切换', key: 'themes', to: '/themes' },
     { label: 'Color', key: 'color', to: '/color' },
     { label: 'Cat', key: 'cat', to: '/cat' },
+    { label: '跨iframe拖拽', key: 'drag', to: '/drag' },
   ]
+  let hideLayout = ['/drag', '/drag-iframe'].includes(location.pathname)
   return (
     <ConfigProvider locale={zhCN}>
-      <Layout className="app">
-        <Header>
-          <Menu mode="horizontal" theme="dark" defaultSelectedKeys={[ defaultKey ]} className="menu">
-            {menuList.map(menuItem => (
-              <Menu.Item key={menuItem.key}>
-                <Link to={menuItem.to}>{menuItem.label}</Link>
-              </Menu.Item>
-            ))}
-          </Menu>
-        </Header>
-        <Content className="contentWrap">
-          <div className="content">
-            <Route path="/" exact component={ Demo } />
-            <Route path="/demo" component={ Demo } />
-            <Route path="/hoc" component={ HocPage } />
-            <Route path="/employee" component={ Employee } />
-            <Route path="/settings" component={ Settings } />
-            <Route path="/themes" component={ ThemedPage } />
-            <Route path="/color" component={ ColorPage } />
-            <Route path="/cat" component={ CatPage } />
-          </div>
-        </Content>
-        <Footer className="footer">
-          项目地址：{' '}<a href={projectUrl}>{projectUrl}</a>
-        </Footer>
-      </Layout>
+      { hideLayout ? (<>
+        {/* 拖拽demo不要展示其他组件 */}
+        <Route path="/drag" component={ DragPage } />
+        <Route path="/drag-iframe" component={ DragIframe } />
+      </>) : (<>
+        <Layout className="app">
+          <Header>
+            <Menu mode="horizontal" theme="dark" defaultSelectedKeys={[ defaultKey ]} className="menu">
+              { menuList.map(menuItem => (
+                <Menu.Item key={ menuItem.key }>
+                  <Link to={ menuItem.to }>{ menuItem.label }</Link>
+                </Menu.Item>
+              )) }
+            </Menu>
+          </Header>
+          <Content className="contentWrap">
+            <div className="content">
+              <Route path="/" exact component={ Demo } />
+              <Route path="/demo" component={ Demo } />
+              <Route path="/hoc" component={ HocPage } />
+              <Route path="/employee" component={ Employee } />
+              <Route path="/settings" component={ Settings } />
+              <Route path="/themes" component={ ThemedPage } />
+              <Route path="/color" component={ ColorPage } />
+              <Route path="/cat" component={ CatPage } />
+            </div>
+          </Content>
+          <Footer className="footer">
+            项目地址：{ ' ' }<a href={ projectUrl }>{ projectUrl }</a>
+          </Footer>
+        </Layout>
+      </>) }
     </ConfigProvider>
   );
 }
