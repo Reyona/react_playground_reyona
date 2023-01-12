@@ -10,12 +10,21 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  // 难怪之前render总是被执行两次 原来是开发环境+严格模式
+  // <React.StrictMode>
     <Provider store={store}>
       <RouterRoot />
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
+
+// document.getElementById('root')?.addEventListener('click', e => {
+//   console.log('root原生:点击了===', e);
+// })
+
+// document.addEventListener('click', e => {
+//   console.log('document原生:点击了===', e);
+// })
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
