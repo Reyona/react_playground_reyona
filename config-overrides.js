@@ -16,6 +16,7 @@ module.exports = override(
     // 别名
     addWebpackAlias({
         '@': path.resolve(__dirname, 'src'),
+        '@resources': path.resolve(__dirname, 'src/resources'),
         '@components': path.resolve(__dirname, 'src/components'),
         '@pages': path.resolve(__dirname, 'src/pages'),
     }),

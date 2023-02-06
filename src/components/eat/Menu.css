@@ -1,0 +1,100 @@
+.menu {
+    position: relative;
+    width: 100%;
+    height: 285px;
+    border-bottom: 3px solid #F2F1F1;
+}
+
+.menu .food-info {
+    position: absolute;
+    top: 80px;
+    right: 48px;
+    pointer-events: none;
+}
+
+.menu .food-info .food-name {
+    margin: 0;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 32px;
+    color: #EB5C77;
+    text-align: right;
+}
+
+.menu .food-info .food-price {
+    margin: 6px 0 0;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 24px;
+    color: #EB5C77;
+    text-align: right;
+}
+
+.menu .add-button {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn .5s;
+    -webkit-animation: fadeIn .5s;
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0;
+    }
+  }
+  
+  .fade-out {
+    animation: fadeOut .5s;
+    -webkit-animation: fadeOut .5s;
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .fade-in-down {
+    animation: fadeInDown .5s;
+    -webkit-animation: fadeInDown .5s;
+  }
+
+  @keyframes fadeOutDown {
+    from {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+  
+  .fade-out-down {
+    animation: fadeOutDown .5s;
+    -webkit-animation: fadeOutDown .5s;
+  }

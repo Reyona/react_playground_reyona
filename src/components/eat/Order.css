@@ -1,0 +1,25 @@
+.order {
+    width: 100%;
+    /* height: 220px; */
+    position: relative;
+}
+
+.order .plate {
+    margin-top: 72px;
+    margin-bottom: 50px;
+}
+
+.order .plate img {
+    display: block;
+    margin: 0 auto;
+}
+
+.order .row {
+    position: absolute;
+    max-height: 60px;
+    overflow: visible;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}

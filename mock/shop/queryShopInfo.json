@@ -1,0 +1,42 @@
+{
+    "flag": 0,
+    "msg": "success",
+    "data": {
+        "id": "shop888",
+        "location": ["Dongcheng District Metro", "Cultural Building"],
+        "telephone": "18999999999",
+        "menu": [
+            {
+                "id": "snack001",
+                "type": "snack",
+                "price": 400,
+                "name": "FRIES",
+                "banner": "fries_1.svg",
+                "bannerAnimation": "",
+                "bannerStars": 1,
+                "preview": "fries.svg"
+            },
+            {
+                "id": "drink001",
+                "type": "drink",
+                "price": 300,
+                "name": "LATTE",
+                "banner": "latte_1.svg",
+                "bannerAnimation": "",
+                "bannerStars": 2,
+                "preview": "latte.svg"
+            },
+            {
+                "id": "main001",
+                "type": "main",
+                "price": 600,
+                "name": "BURGER",
+                "banner": "burger_1.svg",
+                "bannerAnimation": "",
+                "bannerStars": 3,
+                "preview": "burger.svg"
+            }
+        ]
+    }
+    
+}

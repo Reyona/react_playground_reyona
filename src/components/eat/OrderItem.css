@@ -1,0 +1,39 @@
+.order-item {
+    width: 85px;
+    height: 100px;
+    position: relative;
+}
+
+.order-item img {
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+}
+
+.order-item .hit-area {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+@keyframes zoomInTopRight {
+    from {
+        transform: translate3d(100%, -100%, 0) scale(10%, 10%);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0) scale(100%, 100%);
+    }
+}
+
+.zoom-in-top-right {
+    animation: zoomInTopRight .5s;
+    -webkit-animation: zoomInTopRight .5s;
+}

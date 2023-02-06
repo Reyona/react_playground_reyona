@@ -1,0 +1,6 @@
+.page-container {
+    padding-top: 73px;
+    padding-bottom: 65px;
+    background: linear-gradient(180deg, #F5F5F5 0%, #FFEDED 178.57%);
+    /* todo:在#root上加背景色；在#root和#app上加height100% */
+}

@@ -1,0 +1,84 @@
+.menu-item {
+    position: relative;
+    width: 100%;
+    height: 285px;
+}
+
+.menu-item .food-banner {
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.menu-item .stars {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.menu-item .stars .star-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.menu-item .stars .star-icon.large {
+    width: 25px;
+    height: 27px;
+}
+
+.menu-item .stars .star-icon.medium {
+    width: 15px;
+    height: 17px;
+}
+
+.menu-item .stars .star-icon.small {
+    width: 11px;
+    height: 13px;
+}
+
+.menu-item .stars.stars-1 .star-icon.large {
+    top: 10px;
+    left: 172px;
+}
+
+.menu-item .stars.stars-1 .star-icon.medium {
+    top: 110px;
+    left: 25px;
+}
+
+.menu-item .stars.stars-1 .star-icon.small {
+    top: 84px;
+    left: 210px;
+}
+
+.menu-item .stars.stars-2 .star-icon.large {
+    top: 164px;
+    left: 152px;
+}
+
+.menu-item .stars.stars-2 .star-icon.medium {
+    top: 178px;
+    left: 32px;
+}
+
+.menu-item .stars.stars-2 .star-icon.small {
+    top: 58px;
+    left: 168px;
+}
+
+.menu-item .stars.stars-3 .star-icon.large {
+    top: 160px;
+    left: 26px;
+}
+
+.menu-item .stars.stars-3 .star-icon.medium {
+    top: 32px;
+    left: 40px;
+}
+
+.menu-item .stars.stars-3 .star-icon.small {
+    top: 200px;
+    left: 168px;
+}

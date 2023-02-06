@@ -14,6 +14,7 @@ import DragPage from '@/pages/drag/index'
 import DragIframe from '@/pages/drag/iframe'
 import SetStatePage from '@/pages/setState/index'
 import EventPage from '@/pages/event/index'
+import EatPage from '@/pages/eat/index'
 
 const { Header, Content, Footer } = Layout;
 
@@ -22,6 +23,7 @@ function App({ match, location }: any) {
   const projectUrl = 'https://github.com/Reyona/react_playground_reyona'
   const menuList = [
     { label: 'Demo', key: 'demo', to: '/demo' },
+    { label: 'Eat', key: 'eat', to: '/eat' },
     { label: '高阶组件', key: 'hoc', to: '/hoc' },
     { label: '员工管理', key: 'employee', to: '/employee' },
     { label: '系统设置', key: 'settings', to: '/settings' },
@@ -32,7 +34,7 @@ function App({ match, location }: any) {
     { label: 'setState测试', key: 'state', to: '/state' },
     { label: '合成事件冒泡测试', key: 'event', to: '/event' },
   ]
-  let hideLayout = ['/drag', '/drag-iframe'].includes(location.pathname)
+  let hideLayout = ['/eat', '/drag', '/drag-iframe'].includes(location.pathname)
 
   // start 合成事件冒泡测试
   const handleClick = (e: any) => {
@@ -49,6 +51,7 @@ function App({ match, location }: any) {
     <div id="app-clickable" onClick={ handleClick }>
       <ConfigProvider locale={zhCN}>
         { hideLayout ? (<>
+          <Route path="/eat" component={ EatPage } />
           {/* 拖拽demo不要展示其他组件 */}
           <Route path="/drag" component={ DragPage } />
           <Route path="/drag-iframe" component={ DragIframe } />
