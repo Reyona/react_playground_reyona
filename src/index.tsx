@@ -18,6 +18,7 @@ root.render(
   // </React.StrictMode>
 );
 
+// start 合成事件冒泡测试
 // document.getElementById('root')?.addEventListener('click', e => {
 //   console.log('root原生:点击了===', e);
 // })
@@ -25,6 +26,7 @@ root.render(
 // document.addEventListener('click', e => {
 //   console.log('document原生:点击了===', e);
 // })
+// end 合成事件冒泡测试
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

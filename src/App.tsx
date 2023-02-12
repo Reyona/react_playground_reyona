@@ -15,6 +15,7 @@ import DragIframe from '@/pages/drag/iframe'
 import SetStatePage from '@/pages/setState/index'
 import EventPage from '@/pages/event/index'
 import EatPage from '@/pages/eat/index'
+import pureCompPage from '@/pages/pureComponent'
 
 const { Header, Content, Footer } = Layout;
 
@@ -33,6 +34,7 @@ function App({ match, location }: any) {
     { label: '跨iframe拖拽', key: 'drag', to: '/drag' },
     { label: 'setState测试', key: 'state', to: '/state' },
     { label: '合成事件冒泡测试', key: 'event', to: '/event' },
+    { label: '纯组件测试', key: 'pureComp', to: '/pureComp' },
   ]
   let hideLayout = ['/eat', '/drag', '/drag-iframe'].includes(location.pathname)
 
@@ -78,6 +80,7 @@ function App({ match, location }: any) {
                 <Route path="/cat" component={ CatPage } />
                 <Route path="/state" component={ SetStatePage } />
                 <Route path="/event" component={ EventPage } />
+                <Route path="/pureComp" component={ pureCompPage } />
               </div>
             </Content>
             <Footer className="footer">

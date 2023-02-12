@@ -19,7 +19,7 @@ class Example extends Component {
 
     handleClick = (e) => {
         console.log('Example合成:点击了===', e);
-        // 在合成事件上组织冒泡
+        // 在合成事件上阻止冒泡
         // e.stopPropagation();
         // e.nativeEvent.stopImmediatePropagation();
     };
