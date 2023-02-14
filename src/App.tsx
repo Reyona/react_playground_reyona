@@ -16,6 +16,7 @@ import SetStatePage from '@/pages/setState/index'
 import EventPage from '@/pages/event/index'
 import EatPage from '@/pages/eat/index'
 import pureCompPage from '@/pages/pureComponent'
+import tsPlayground from '@/pages/ts'
 
 const { Header, Content, Footer } = Layout;
 
@@ -35,6 +36,7 @@ function App({ match, location }: any) {
     { label: 'setState测试', key: 'state', to: '/state' },
     { label: '合成事件冒泡测试', key: 'event', to: '/event' },
     { label: '纯组件测试', key: 'pureComp', to: '/pureComp' },
+    { label: 'TS测试', key: 'ts', to: '/ts' },
   ]
   let hideLayout = ['/eat', '/drag', '/drag-iframe'].includes(location.pathname)
 
@@ -81,6 +83,7 @@ function App({ match, location }: any) {
                 <Route path="/state" component={ SetStatePage } />
                 <Route path="/event" component={ EventPage } />
                 <Route path="/pureComp" component={ pureCompPage } />
+                <Route path="/ts" component={ tsPlayground } />
               </div>
             </Content>
             <Footer className="footer">
